@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}My Details{% endblock %}
+{% block content %}
+<h2>My details</h2>
+<p class="muted">Username: <strong>{{ user['username'] }}</strong> &middot; Member since {{ user['created_at'] }}</p>
+<form method="post">
+  <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+  <label for="full_name">Full name</label>
+  <input type="text" id="full_name" name="full_name" value="{{ user['full_name'] }}">
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" value="{{ user['email'] }}" required>
+  <label for="phone">Phone</label>
+  <input type="text" id="phone" name="phone" value="{{ user['phone'] }}">
+  <button class="primary" type="submit">Save changes</button>
+</form>
+{% endblock %}
